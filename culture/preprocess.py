@@ -1,10 +1,14 @@
-from stanfordnlp.server import CoreNLPClient
+#from stanfordnlp.server import CoreNLPClient
+from stanza.server import CoreNLPClient
 import os
 import re
 import functools
 from . import file_util
 import global_options
 
+os.environ[
+    "CORENLP_HOME"
+] = "/stanfordstanza"
 
 class preprocessor(object):
     def __init__(self, client):
@@ -209,6 +213,7 @@ class text_cleaner(object):
     def clean(self, line, id):
         """Main function that chains all filters together and applies to a string. 
         """
+        print("CLEANING LINE : {line} , ID : {id}")
         return (
             functools.reduce(
                 lambda obj, func: func(obj),
@@ -228,6 +233,7 @@ if __name__ == "__main__":
         },
         memory=global_options.RAM_CORENLP,
         threads=1,
+        timeout = 12000000
     ) as client:
         doc = "When I was a child in Ohio, I always wanted to go to Stanford University with respect to higher education. But I went along with my parents."
         EC_preprocessor = preprocessor(client)
