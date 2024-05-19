@@ -1,5 +1,5 @@
 #from stanfordnlp.server import CoreNLPClient
-from stanza.server import CoreNLPClient
+from stanfordnlp.server import CoreNLPClient
 import os
 import re
 import functools
