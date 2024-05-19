@@ -2,9 +2,8 @@ import datetime
 import itertools
 import os
 from pathlib import Path
-import tqdm as tqdm
 
-from stanza.server import CoreNLPClient
+from stanfordnlp.server import CoreNLPClient
 
 import global_options
 from culture import file_util, preprocess
@@ -72,7 +71,7 @@ def process_largefile(
         # jump to index
         if start_index is not None:
             # start at start_index line
-            for _ in (range(start_index)):
+            for _ in range(start_index):
                 next(f_in)
             input_file_ids = input_file_ids[start_index:]
             line_i = start_index
