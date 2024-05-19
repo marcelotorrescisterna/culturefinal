@@ -8,6 +8,7 @@ import pandas as pd
 
 import global_options
 import parse
+import parse_parallelFinal
 from culture import culture_models, file_util, preprocess
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -21,15 +22,25 @@ def clean_file(in_file, out_file):
         out_file {str or Path} -- output corpus
     """
     a_text_clearner = preprocess.text_cleaner()
-    parse.process_largefile(
-        input_file=in_file,
-        output_file=out_file,
-        input_file_ids=[
-            str(i) for i in range(file_util.line_counter(in_file))
-        ],  # fake IDs (do not need IDs for this function).
-        output_index_file=None,
-        function_name=functools.partial(a_text_clearner.clean),
-        chunk_size=200000,
+    # parse.process_largefile(
+    #     input_file=in_file,
+    #     output_file=out_file,
+    #     input_file_ids=[
+    #         str(i) for i in range(file_util.line_counter(in_file))
+    #     ],  # fake IDs (do not need IDs for this function).
+    #     output_index_file=None,
+    #     function_name=functools.partial(a_text_clearner.clean),
+    #     chunk_size=200000,
+    # )
+    parse_parallelFinal.process_largefile(
+    input_file=in_file,
+    output_file=out_file,
+    input_file_ids=[
+        str(i) for i in range(file_util.line_counter(in_file))
+    ],  # fake IDs (do not need IDs for this function).
+    output_index_file=None,
+    function_name=functools.partial(a_text_clearner.clean),
+    chunk_size=200000,
     )
 
 
