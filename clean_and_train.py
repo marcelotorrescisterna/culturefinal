@@ -32,6 +32,8 @@ def clean_file(in_file, out_file):
     #     function_name=functools.partial(a_text_clearner.clean),
     #     chunk_size=200000,
     # )
+    
+    print("ENTRO AQUI LA MIERDA!!!!")
     parse_parallelFinal.process_largefile(
     input_file=in_file,
     output_file=out_file,
