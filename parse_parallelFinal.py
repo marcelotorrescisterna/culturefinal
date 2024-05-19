@@ -48,6 +48,8 @@ def process_largefile(
     assert file_util.line_counter(input_file) == len(
         input_file_ids
     ), "Make sure the input file has the same number of rows as the input ID file. "
+    
+    print("JUSTO ANTES DEL OPENNNNNNNNN")
 
     with open(input_file, newline="\n", encoding="utf-8", errors="ignore") as f_in:
         line_i = 0
@@ -71,7 +73,7 @@ def process_largefile(
             output_line_ids = []
             print(f"LINES : {next_n_line_ids}")
             with Pool(global_options.N_CORES) as pool:
-                # print("ENTRO AL FOOOOOOOOOOOOOOOOOR")
+                print("ENTRO AL FOOOOOOOOOOOOOOOOOR")
                 try:
                     for output_line, output_line_id in pool.starmap(
                         function_name, zip(next_n_lines, next_n_line_ids)
