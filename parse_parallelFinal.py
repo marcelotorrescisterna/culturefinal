@@ -44,12 +44,12 @@ def process_largefile(
             os.remove(str(output_file))
             os.remove(str(output_index_file))
     except OSError:
-        pass
+        print("ERROR AQUI!")
     assert file_util.line_counter(input_file) == len(
         input_file_ids
     ), "Make sure the input file has the same number of rows as the input ID file. "
     
-    print("JUSTO ANTES DEL OPENNNNNNNNN")
+    
 
     with open(input_file, newline="\n", encoding="utf-8", errors="ignore") as f_in:
         line_i = 0
