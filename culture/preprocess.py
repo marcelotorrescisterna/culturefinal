@@ -213,7 +213,7 @@ class text_cleaner(object):
     def clean(self, line, id):
         """Main function that chains all filters together and applies to a string. 
         """
-        print(f"CLEANING LINE : {line} , ID : {id}")
+        print(f" ID : {id}")
         return (
             functools.reduce(
                 lambda obj, func: func(obj),
